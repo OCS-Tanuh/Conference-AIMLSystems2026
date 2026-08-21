@@ -20,7 +20,6 @@ def set_seed(seed: int = 32) -> None:
     random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
-    # When running on the CuDNN backend, two further options must be set
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     # Set a fixed value for the hash seed
@@ -89,8 +88,6 @@ def train_model(model_ft, criterion, optimizer_ft, inst, num_epochs, t_schedular
     t_acc = 0.0
     since = time.time()
     for epoch in range(num_epochs):
-        #train_dl = get_undersampled_loader(x_train, y_train, batch_size, epoch)
-        #train_dl = get_oversampled_loader(x_train, y_train, batch_size, epoch)
         print('Epoch {}/{}'.format(epoch, num_epochs-1))
         print('-' * 10)
         t_l=0
